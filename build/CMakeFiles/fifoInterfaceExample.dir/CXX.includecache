@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jack/openai/lib/python3.6/site-packages/atari_py/doc/examples/fifoInterfaceExample.cpp
+iostream
+-
+string
+-
+cstring
+-
+vector
+-
+cstdio
+-
+cstdlib
+-
+
