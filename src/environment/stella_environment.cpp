@@ -18,6 +18,10 @@
 #include "stella_environment.hpp"
 #include "../emucore/m6502/src/System.hxx"
 #include <sstream>
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 StellaEnvironment::StellaEnvironment(OSystem* osystem, RomSettings* settings):
   m_osystem(osystem),
@@ -141,7 +145,6 @@ void StellaEnvironment::noopIllegalActions(Action & player_a_action, Action & pl
 }
 
 reward_t StellaEnvironment::act(Action player_a_action, Action player_b_action) {
-  
   // Total reward received as we repeat the action
   reward_t sum_rewards = 0;
 

@@ -387,7 +387,7 @@ void ALEState::setActionJoysticks(Event* event, int player_a_action, int player_
   }
 
   switch(player_b_action) {
-  case PLAYER_B_NOOP: 
+      case PLAYER_B_NOOP: 
           break; 
           
       case PLAYER_B_FIRE: 

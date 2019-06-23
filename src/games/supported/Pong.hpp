@@ -50,7 +50,7 @@ class PongSettings : public RomSettings {
         const char* rom() const { return "pong"; }
 
         // get the available number of modes
-        unsigned int getNumModes() const { return 2; }
+        unsigned int getNumModes() const { return 50; }
 
         // create a new instance of the rom
         RomSettings* clone() const;

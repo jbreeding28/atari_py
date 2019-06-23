@@ -17,7 +17,7 @@ extern "C" {
   void setBool(ALEInterface *ale,const char *key,bool value){ale->setBool(key,value);}
   void setFloat(ALEInterface *ale,const char *key,float value){ale->setFloat(key,value);}
   void loadROM(ALEInterface *ale,const char *rom_file){ale->loadROM(rom_file);}
-  int act(ALEInterface *ale,int action){return ale->act((Action)action);}
+  int act(ALEInterface *ale,int player_a_action,int player_b_action){return ale->act((Action)player_a_action,(Action)player_b_action);}
   bool game_over(ALEInterface *ale){return ale->game_over();}
   void reset_game(ALEInterface *ale){ale->reset_game();}
   void getAvailableModes(ALEInterface *ale,int *availableModes) {

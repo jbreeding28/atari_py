@@ -42,6 +42,7 @@
 #include <stdexcept>
 #include <vector>
 
+
 #include "common/ColourPalette.hpp"
 #include "common/Constants.h"
 #include "emucore/Console.hxx"
@@ -253,8 +254,8 @@ int ALEInterface::lives() {
 // user's responsibility to check if the game has ended and reset
 // when necessary - this method will keep pressing buttons on the
 // game over screen.
-reward_t ALEInterface::act(Action action) {
-  reward_t reward = environment->act(action, PLAYER_B_NOOP);
+reward_t ALEInterface::act(Action player_a_action, Action player_b_action) {
+  reward_t reward = environment->act(player_a_action, player_b_action);
   if (theOSystem->p_display_screen != NULL) {
     theOSystem->p_display_screen->display_screen();
     while (theOSystem->p_display_screen->manual_control_engaged()) {
