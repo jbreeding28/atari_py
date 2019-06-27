@@ -144,6 +144,7 @@ void StellaEnvironment::noopIllegalActions(Action & player_a_action, Action & pl
     player_b_action = (Action)PLAYER_B_NOOP;
 }
 
+
 reward_t StellaEnvironment::act(Action player_a_action, Action player_b_action) {
   // Total reward received as we repeat the action
   reward_t sum_rewards = 0;

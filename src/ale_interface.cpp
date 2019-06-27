@@ -254,6 +254,8 @@ int ALEInterface::lives() {
 // user's responsibility to check if the game has ended and reset
 // when necessary - this method will keep pressing buttons on the
 // game over screen.
+
+// pass both actions through
 reward_t ALEInterface::act(Action player_a_action, Action player_b_action) {
   reward_t reward = environment->act(player_a_action, player_b_action);
   if (theOSystem->p_display_screen != NULL) {
