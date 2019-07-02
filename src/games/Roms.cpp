@@ -13,87 +13,87 @@
 #include "RomUtils.hpp"
 
 // include the game implementations
-#include "supported/Adventure.hpp"
-#include "supported/AirRaid.hpp"
-#include "supported/Alien.hpp"
-#include "supported/Amidar.hpp"
-#include "supported/Assault.hpp"
-#include "supported/Asterix.hpp"
-#include "supported/Asteroids.hpp"
-#include "supported/Atlantis.hpp"
-#include "supported/BankHeist.hpp"
-#include "supported/BattleZone.hpp"
-#include "supported/BeamRider.hpp"
-#include "supported/Berzerk.hpp"
-#include "supported/Bowling.hpp"
-#include "supported/Boxing.hpp"
-#include "supported/Breakout.hpp"
-#include "supported/Carnival.hpp"
-#include "supported/Centipede.hpp"
-#include "supported/ChopperCommand.hpp"
-#include "supported/CrazyClimber.hpp"
-#include "supported/Defender.hpp"
-#include "supported/DemonAttack.hpp"
-#include "supported/DonkeyKong.hpp"
-#include "supported/DoubleDunk.hpp"
-#include "supported/ElevatorAction.hpp"
-#include "supported/Enduro.hpp"
-#include "supported/FishingDerby.hpp"
-#include "supported/Freeway.hpp"
-#include "supported/Frogger.hpp"
-#include "supported/Frostbite.hpp"
-#include "supported/Galaxian.hpp"
-#include "supported/Gopher.hpp"
-#include "supported/Gravitar.hpp"
-#include "supported/Hero.hpp"
-#include "supported/IceHockey.hpp"
-#include "supported/JamesBond.hpp"
-#include "supported/JourneyEscape.hpp"
-#include "supported/Kaboom.hpp"
-#include "supported/Kangaroo.hpp"
-#include "supported/Koolaid.hpp"
-#include "supported/KeystoneKapers.hpp"
-#include "supported/Kingkong.hpp"
-#include "supported/Krull.hpp"
-#include "supported/KungFuMaster.hpp"
-#include "supported/LaserGates.hpp"
-#include "supported/LostLuggage.hpp"
-#include "supported/MontezumaRevenge.hpp"
-#include "supported/MrDo.hpp"
-#include "supported/MsPacman.hpp"
-#include "supported/NameThisGame.hpp"
-#include "supported/Phoenix.hpp"
-#include "supported/Pitfall.hpp"
+//#include "supported/Adventure.hpp"
+//#include "supported/AirRaid.hpp"
+//#include "supported/Alien.hpp"
+//#include "supported/Amidar.hpp"
+//#include "supported/Assault.hpp"
+//#include "supported/Asterix.hpp"
+//#include "supported/Asteroids.hpp"
+//#include "supported/Atlantis.hpp"
+//#include "supported/BankHeist.hpp"
+//#include "supported/BattleZone.hpp"
+//#include "supported/BeamRider.hpp"
+//#include "supported/Berzerk.hpp"
+//#include "supported/Bowling.hpp"
+//#include "supported/Boxing.hpp"
+//#include "supported/Breakout.hpp"
+//#include "supported/Carnival.hpp"
+//#include "supported/Centipede.hpp"
+//#include "supported/ChopperCommand.hpp"
+//#include "supported/CrazyClimber.hpp"
+//#include "supported/Defender.hpp"
+//#include "supported/DemonAttack.hpp"
+//#include "supported/DonkeyKong.hpp"
+//#include "supported/DoubleDunk.hpp"
+//#include "supported/ElevatorAction.hpp"
+//#include "supported/Enduro.hpp"
+//#include "supported/FishingDerby.hpp"
+//#include "supported/Freeway.hpp"
+//#include "supported/Frogger.hpp"
+//#include "supported/Frostbite.hpp"
+//#include "supported/Galaxian.hpp"
+//#include "supported/Gopher.hpp"
+//#include "supported/Gravitar.hpp"
+//#include "supported/Hero.hpp"
+//#include "supported/IceHockey.hpp"
+//#include "supported/JamesBond.hpp"
+//#include "supported/JourneyEscape.hpp"
+//#include "supported/Kaboom.hpp"
+//#include "supported/Kangaroo.hpp"
+//#include "supported/Koolaid.hpp"
+//#include "supported/KeystoneKapers.hpp"
+//#include "supported/Kingkong.hpp"
+//#include "supported/Krull.hpp"
+//#include "supported/KungFuMaster.hpp"
+//#include "supported/LaserGates.hpp"
+//#include "supported/LostLuggage.hpp"
+//#include "supported/MontezumaRevenge.hpp"
+//#include "supported/MrDo.hpp"
+//#include "supported/MsPacman.hpp"
+//#include "supported/NameThisGame.hpp"
+//#include "supported/Phoenix.hpp"
+//#include "supported/Pitfall.hpp"
 #include "supported/Pong.hpp"
-#include "supported/Pooyan.hpp"
-#include "supported/PrivateEye.hpp"
-#include "supported/QBert.hpp"
-#include "supported/RiverRaid.hpp"
-#include "supported/RoadRunner.hpp"
-#include "supported/RoboTank.hpp"
-#include "supported/Seaquest.hpp"
-#include "supported/SirLancelot.hpp"
-#include "supported/Skiing.hpp"
-#include "supported/Solaris.hpp"
+//#include "supported/Pooyan.hpp"
+//#include "supported/PrivateEye.hpp"
+//#include "supported/QBert.hpp"
+//#include "supported/RiverRaid.hpp"
+//#include "supported/RoadRunner.hpp"
+//#include "supported/RoboTank.hpp"
+//#include "supported/Seaquest.hpp"
+//#include "supported/SirLancelot.hpp"
+//#include "supported/Skiing.hpp"
+//#include "supported/Solaris.hpp"
 #include "supported/SpaceInvaders.hpp"
-#include "supported/StarGunner.hpp"
-#include "supported/Tennis.hpp"
-#include "supported/Tetris.hpp"
-#include "supported/TimePilot.hpp"
-#include "supported/Turmoil.hpp"
-#include "supported/Trondead.hpp"
-#include "supported/Tutankham.hpp"
-#include "supported/UpNDown.hpp"
-#include "supported/Venture.hpp"
-#include "supported/VideoPinball.hpp"
-#include "supported/WizardOfWor.hpp"
-#include "supported/YarsRevenge.hpp"
-#include "supported/Zaxxon.hpp"
+//#include "supported/StarGunner.hpp"
+//#include "supported/Tennis.hpp"
+//#include "supported/Tetris.hpp"
+//#include "supported/TimePilot.hpp"
+//#include "supported/Turmoil.hpp"
+//#include "supported/Trondead.hpp"
+//#include "supported/Tutankham.hpp"
+//#include "supported/UpNDown.hpp"
+//#include "supported/Venture.hpp"
+//#include "supported/VideoPinball.hpp"
+//#include "supported/WizardOfWor.hpp"
+//#include "supported/YarsRevenge.hpp"
+//#include "supported/Zaxxon.hpp"
 
 
 /* list of supported games */
 static const RomSettings *roms[]  = {
-    new AdventureSettings(),
+/*    new AdventureSettings(),
     new AirRaidSettings(),
     new AlienSettings(),
     new AmidarSettings(),
@@ -144,7 +144,9 @@ static const RomSettings *roms[]  = {
     new NameThisGameSettings(),
     new PhoenixSettings(),
     new PitfallSettings(),
+*/
     new PongSettings(),
+/*
     new PooyanSettings(),
     new PrivateEyeSettings(),
     new QBertSettings(),
@@ -155,7 +157,9 @@ static const RomSettings *roms[]  = {
     new SirLancelotSettings(),
     new SkiingSettings(),
     new SolarisSettings(),
+*/
     new SpaceInvadersSettings(),
+/*
     new StarGunnerSettings(),
     new TennisSettings(),
     new TetrisSettings(),
@@ -169,6 +173,7 @@ static const RomSettings *roms[]  = {
     new WizardOfWorSettings(),
     new YarsRevengeSettings(),
     new ZaxxonSettings(),
+*/
 };
 
 

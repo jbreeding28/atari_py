@@ -145,9 +145,11 @@ void StellaEnvironment::noopIllegalActions(Action & player_a_action, Action & pl
 }
 
 
-reward_t StellaEnvironment::act(Action player_a_action, Action player_b_action) {
+std::pair<reward_t, reward_t> StellaEnvironment::act(Action player_a_action, Action player_b_action) {
   // Total reward received as we repeat the action
-  reward_t sum_rewards = 0;
+  // initialize for two rewards
+  reward_t sum_rewards_1 = 0;
+  reward_t sum_rewards_2 = 0;
 
   Random& rng = m_osystem->rng();
 
@@ -171,10 +173,13 @@ reward_t StellaEnvironment::act(Action player_a_action, Action player_b_action) 
         m_screen_exporter->saveNext(m_screen);
 
     // Use the stored actions, which may or may not have changed this frame
-    sum_rewards += oneStepAct(m_player_a_action, m_player_b_action);
+    std::pair<reward_t, reward_t> rewards = oneStepAct(m_player_a_action, m_player_b_action);
+    // separate the pair
+    sum_rewards_1 += rewards.first;
+    sum_rewards_2 += rewards.second;
   }
-
-  return sum_rewards;
+  // turn the rewards into a pair at the end
+  return std::make_pair(sum_rewards_1,sum_rewards_2);
 }
 
 /** This functions emulates a push on the reset button of the console */
@@ -188,12 +193,12 @@ void StellaEnvironment::softReset() {
 
 /** Applies the given actions (e.g. updating paddle positions when the paddle is used)
   *  and performs one simulation step in Stella. */
-reward_t StellaEnvironment::oneStepAct(Action player_a_action, Action player_b_action) {
+std::pair<reward_t, reward_t> StellaEnvironment::oneStepAct(Action player_a_action, Action player_b_action) {
   // Once in a terminal state, refuse to go any further (special actions must be handled
   //  outside of this environment; in particular reset() should be called rather than passing
   //  RESET or SYSTEM_RESET.
   if (isTerminal())
-    return 0;
+    return std::make_pair(0, 0);
 
   // Convert illegal actions into NOOPs; actions such as reset are always legal
   noopIllegalActions(player_a_action, player_b_action);
@@ -202,7 +207,6 @@ reward_t StellaEnvironment::oneStepAct(Action player_a_action, Action player_b_a
   emulate(player_a_action, player_b_action);
   // Increment the number of frames seen so far
   m_state.incrementFrame();
-
   return m_settings->getReward();
 }
 

@@ -34,8 +34,8 @@ ale_lib.setFloat.argtypes = [c_void_p, c_char_p, c_float]
 ale_lib.setFloat.restype = None
 ale_lib.loadROM.argtypes = [c_void_p, c_char_p]
 ale_lib.loadROM.restype = None
-ale_lib.act.argtypes = [c_void_p, c_int]
-ale_lib.act.restype = c_int
+ale_lib.act.argtypes = [c_void_p, c_int, c_int, POINTER(c_int), POINTER(c_int)]
+ale_lib.act.restype = None
 ale_lib.game_over.argtypes = [c_void_p]
 ale_lib.game_over.restype = c_bool
 ale_lib.reset_game.argtypes = [c_void_p]
@@ -145,7 +145,10 @@ class ALEInterface(object):
         ale_lib.loadROM(self.obj, _as_bytes(rom_file))
 
     def act(self, a, b=18):
-        return ale_lib.act(self.obj, int(a), int(b))
+        reward_1 = c_int(0)
+        reward_2 = c_int(0)
+        ale_lib.act(self.obj, int(a), int(b), byref(reward_1), byref(reward_2))
+        return reward_1.value, reward_2.value
 
     def game_over(self):
         return ale_lib.game_over(self.obj)

@@ -44,7 +44,7 @@ class PongSettings : public RomSettings {
         bool isTerminal() const;
 
         // get the most recently observed reward
-        reward_t getReward() const;
+        std::pair<reward_t, reward_t> getReward() const;
 
         // the rom-name
         const char* rom() const { return "pong"; }
@@ -85,7 +85,8 @@ class PongSettings : public RomSettings {
     private:
 
         bool m_terminal;
-        reward_t m_reward;
+        reward_t m_reward_1;
+        reward_t m_reward_2;
         reward_t m_score;
 };
 

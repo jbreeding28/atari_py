@@ -27,7 +27,7 @@ class StellaEnvironmentWrapper {
   // stella_environment.hpp.
   public:
     StellaEnvironmentWrapper(StellaEnvironment &environment);
-    reward_t act(Action player_a_action, Action player_b_action);
+    std::pair<reward_t, reward_t> act(Action player_a_action, Action player_b_action);
     void softReset();
     void pressSelect(size_t num_steps = 1);
     

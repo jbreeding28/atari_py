@@ -79,7 +79,7 @@ public:
   // user's responsibility to check if the game has ended and reset
   // when necessary - this method will keep pressing buttons on the
   // game over screen.
-  reward_t act(Action player_a_action, Action player_b_action);
+  void act(Action player_a_action, Action player_b_action, reward_t *reward_1, reward_t *reward_2);
 
   // Indicates if the game has ended.
   bool game_over() const;

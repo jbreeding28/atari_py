@@ -53,7 +53,7 @@ class FIFOController : public ALEController {
     FILE* m_fout; 
     FILE* m_fin; 
 
-    reward_t latest_reward; // Most recent reward
+    std::pair<reward_t, reward_t> latest_rewards; // Most recent reward
 };
 
 #endif // __FIFO_CONTROLLER_HPP__

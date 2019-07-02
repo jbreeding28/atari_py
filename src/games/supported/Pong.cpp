@@ -36,7 +36,8 @@ void PongSettings::step(const System& system) {
     int x = readRam(&system, 13); // cpu score
     int y = readRam(&system, 14); // player score
     reward_t score = y - x;
-    m_reward = score - m_score;
+    m_reward_1 = score - m_score;
+    m_reward_2 = -m_reward_1;
     m_score = score;
 
     // update terminal status
@@ -53,9 +54,9 @@ bool PongSettings::isTerminal() const {
 
 
 /* get the most recently observed reward */
-reward_t PongSettings::getReward() const { 
+std::pair<reward_t, reward_t> PongSettings::getReward() const { 
 
-    return m_reward; 
+    return std::make_pair(m_reward_1,m_reward_2); 
 }
 
 
@@ -79,7 +80,8 @@ bool PongSettings::isMinimal(const Action &a) const {
 /* reset the state of the game */
 void PongSettings::reset() {
     
-    m_reward   = 0;
+    m_reward_1 = 0;
+    m_reward_2 = 0;
     m_score    = 0;
     m_terminal = false;
 }
@@ -87,14 +89,16 @@ void PongSettings::reset() {
         
 /* saves the state of the rom settings */
 void PongSettings::saveState(Serializer & ser) {
-  ser.putInt(m_reward);
+  ser.putInt(m_reward_1);
+  ser.putInt(m_reward_2);
   ser.putInt(m_score);
   ser.putBool(m_terminal);
 }
 
 // loads the state of the rom settings
 void PongSettings::loadState(Deserializer & ser) {
-  m_reward = ser.getInt();
+  m_reward_1 = ser.getInt();
+  m_reward_2 = ser.getInt();
   m_score = ser.getInt();
   m_terminal = ser.getBool();
 }

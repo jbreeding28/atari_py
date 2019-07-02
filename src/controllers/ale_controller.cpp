@@ -49,8 +49,8 @@ void ALEController::display() {
   }
 }
 
-reward_t ALEController::applyActions(Action player_a, Action player_b) {
-  reward_t sum_rewards = 0;
+std::pair<reward_t, reward_t> ALEController::applyActions(Action player_a, Action player_b) {
+  std::pair<reward_t, reward_t> sum_rewards = std::make_pair(0,0);
   // Perform different operations based on the first player's action 
   switch (player_a) {
     case LOAD_STATE: // Load system state

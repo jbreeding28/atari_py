@@ -59,7 +59,7 @@ void FIFOController::run() {
     readAction(action_a, action_b);
 
     // Emulate Atari forward
-    latest_reward = applyActions(action_a, action_b);
+    latest_rewards = applyActions(action_a, action_b);
 
     // Update display if needed
     display();
@@ -226,7 +226,7 @@ void FIFOController::sendRAM() {
 }
 
 void FIFOController::sendRL() {
-  int r = (int) latest_reward;
+  int r = (int) latest_rewards.first;
   bool is_terminal = m_environment.isTerminal();
 
   fprintf(m_fout, "%d,%d:", is_terminal, r);

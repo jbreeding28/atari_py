@@ -44,7 +44,7 @@ class SpaceInvadersSettings : public RomSettings {
         bool isTerminal() const;
 
         // get the most recently observed reward
-        reward_t getReward() const;
+        std::pair<reward_t, reward_t> getReward() const;
 
         // the rom-name
         const char* rom() const { return "space_invaders"; }
@@ -86,8 +86,10 @@ class SpaceInvadersSettings : public RomSettings {
     private:
 
         bool m_terminal;
-        reward_t m_reward;
-        reward_t m_score;
+        reward_t m_reward_1;
+        reward_t m_reward_2;
+        reward_t m_score_1;
+        reward_t m_score_2;
         int m_lives;
       
         static ActionVect actions;

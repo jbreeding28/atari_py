@@ -25,6 +25,7 @@
  * *****************************************************************************
  */
 #include "SpaceInvaders.hpp"
+#include <iostream>
 
 #include "../RomUtils.hpp"
 
@@ -48,16 +49,25 @@ RomSettings* SpaceInvadersSettings::clone() const {
 void SpaceInvadersSettings::step(const System& system) {
 
     // update the reward
-    int score = getDecimalScore(0xE8, 0xE6, &system);
+    int score_1 = getDecimalScore(0xE8, 0xE6, &system);
+    // by trial and error, found the location of player 2's score
+    int score_2 = getDecimalScore(0xE9, 0xE7, &system);
     // reward cannot get negative in this game. When it does, it means that the score has looped 
     // (overflow)
-    m_reward = score - m_score;
-    if(m_reward < 0) {
+    m_reward_1 = score_1 - m_score_1;
+    m_reward_2 = score_2 - m_score_2;
+    if(m_reward_1 < 0) {
         // 10000 is the highest possible score
         const int maximumScore = 10000;
-        m_reward = (maximumScore - m_score) + score; 
+        m_reward_1 = (maximumScore - m_score_1) + score_1;
     }
-    m_score = score;
+    if(m_reward_2 < 0) {
+        // 10000 is the highest possible score
+        const int maximumScore = 10000;
+        m_reward_2 = (maximumScore - m_score_2) + score_2;
+    }
+    m_score_1 = score_1;
+    m_score_2 = score_2;
     m_lives = readRam(&system, 0xC9);
 
     // update terminal status
@@ -75,9 +85,8 @@ bool SpaceInvadersSettings::isTerminal() const {
 
 
 /* get the most recently observed reward */
-reward_t SpaceInvadersSettings::getReward() const { 
-
-    return m_reward; 
+std::pair<reward_t, reward_t> SpaceInvadersSettings::getReward() const { 
+    return std::make_pair(m_reward_1,m_reward_2); 
 }
 
 
@@ -101,8 +110,10 @@ bool SpaceInvadersSettings::isMinimal(const Action &a) const {
 /* reset the state of the game */
 void SpaceInvadersSettings::reset() {
     
-    m_reward   = 0;
-    m_score    = 0;
+    m_reward_1 = 0;
+    m_score_1  = 0;
+    m_reward_2 = 0;
+    m_score_2  = 0;
     m_terminal = false;
     m_lives    = 3; 
 }
@@ -110,16 +121,20 @@ void SpaceInvadersSettings::reset() {
         
 /* saves the state of the rom settings */
 void SpaceInvadersSettings::saveState(Serializer & ser) {
-  ser.putInt(m_reward);
-  ser.putInt(m_score);
+  ser.putInt(m_reward_1);
+  ser.putInt(m_score_1);
+  ser.putInt(m_reward_2);
+  ser.putInt(m_score_2);
   ser.putBool(m_terminal);
   ser.putInt(m_lives);
 }
 
 // loads the state of the rom settings
 void SpaceInvadersSettings::loadState(Deserializer & ser) {
-  m_reward = ser.getInt();
-  m_score = ser.getInt();
+  m_reward_1 = ser.getInt();
+  m_score_1 = ser.getInt();
+  m_reward_2 = ser.getInt();
+  m_score_2 = ser.getInt();
   m_terminal = ser.getBool();
   m_lives = ser.getInt();
 }

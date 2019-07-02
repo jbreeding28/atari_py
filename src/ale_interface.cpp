@@ -256,17 +256,18 @@ int ALEInterface::lives() {
 // game over screen.
 
 // pass both actions through
-reward_t ALEInterface::act(Action player_a_action, Action player_b_action) {
-  reward_t reward = environment->act(player_a_action, player_b_action);
+void ALEInterface::act(Action player_a_action, Action player_b_action, reward_t *reward_1, reward_t *reward_2) {
+  std::pair<reward_t, reward_t> rewards = environment->act(player_a_action, player_b_action);
   if (theOSystem->p_display_screen != NULL) {
     theOSystem->p_display_screen->display_screen();
-    while (theOSystem->p_display_screen->manual_control_engaged()) {
-      Action user_action = theOSystem->p_display_screen->getUserAction();
-      reward += environment->act(user_action, PLAYER_B_NOOP);
-      theOSystem->p_display_screen->display_screen();
-    }
+    //while (theOSystem->p_display_screen->manual_control_engaged()) {
+    //  Action user_action = theOSystem->p_display_screen->getUserAction();
+    //  reward += environment->act(user_action, PLAYER_B_NOOP);
+    //  theOSystem->p_display_screen->display_screen();
+    //}
   }
-  return reward;
+  *reward_1 = rewards.first;
+  *reward_2 = rewards.second;
 }
 
 // Returns the vector of modes available for the current game.

@@ -58,7 +58,7 @@ public:
     virtual bool isTerminal() const = 0;
 
     // get the most recently observed reward
-    virtual reward_t getReward() const = 0;
+    virtual std::pair<reward_t, reward_t> getReward() const = 0;
 
     // the rom-name
     virtual const char *rom() const = 0;

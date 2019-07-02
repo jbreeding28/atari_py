@@ -5,7 +5,7 @@ StellaEnvironmentWrapper::StellaEnvironmentWrapper(StellaEnvironment &environmen
     m_environment(environment) {
 }
 
-reward_t StellaEnvironmentWrapper::act(Action player_a_action, Action player_b_action) {
+std::pair<reward_t, reward_t> StellaEnvironmentWrapper::act(Action player_a_action, Action player_b_action) {
     return m_environment.act(player_a_action, player_b_action);
 }
 

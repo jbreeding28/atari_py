@@ -62,7 +62,7 @@ class StellaEnvironment {
       *  Note that the post-act() frame number might not correspond to the pre-act() frame
       *  number plus the frame skip.
       */
-    reward_t act(Action player_a_action, Action player_b_action);
+    std::pair<reward_t, reward_t> act(Action player_a_action, Action player_b_action);
 
     /** This functions emulates a push on the reset button of the console */
     void softReset();
@@ -101,7 +101,7 @@ class StellaEnvironment {
 
   private:
     /** This applies an action exactly one time step. Helper function to act(). */
-    reward_t oneStepAct(Action player_a_action, Action player_b_action);
+    std::pair<reward_t, reward_t> oneStepAct(Action player_a_action, Action player_b_action);
 
     /** Actually emulates the emulator for a given number of steps. */
     void emulate(Action player_a_action, Action player_b_action, size_t num_steps = 1);
