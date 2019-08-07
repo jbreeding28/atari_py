@@ -152,7 +152,6 @@ std::pair<reward_t, reward_t> StellaEnvironment::act(Action player_a_action, Act
   reward_t sum_rewards_2 = 0;
 
   Random& rng = m_osystem->rng();
-
   // Apply the same action for a given number of times... note that act() will refuse to emulate 
   //  past the terminal state
   for (size_t i = 0; i < m_frame_skip; i++) {
